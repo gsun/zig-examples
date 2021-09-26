@@ -35,7 +35,7 @@ const Client = struct {
     handle_frame: @Frame(handle),
 
     fn handle(self: *Client, room: *Room) !void {
-         const l = try self.conn.stream.write("server: welcome to the chat server\n");
+        _ = try self.conn.stream.write("server: welcome to the chat server\n");
 
         while (true) {
             var buf: [100]u8 = undefined;
@@ -56,7 +56,7 @@ const Room = struct {
         while (it.next()) |entry| {
             const client = entry.key_ptr.*;
             if (client == sender) continue;
-            const l = try client.conn.stream.write(msg);
+            _ = try client.conn.stream.write(msg);
         }
     }
 };
