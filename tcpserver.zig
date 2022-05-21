@@ -17,7 +17,7 @@ pub fn main() !void {
     const addr = try net.Address.parseIp("127.0.0.1", 0);
     try server.listen(addr);
 
-    std.debug.warn("listening at {}\n", .{server.listen_address});
+    std.log.warn("listening at {}\n", .{server.listen_address});
 
     while (true) {
         std.debug.print("Waiting for connection\n", .{});
