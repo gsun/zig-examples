@@ -18,3 +18,7 @@ warning: listening at 127.0.0.1:65356
 
 terminal 2:
 nc 127.0.0.1 65356
+
+
+go implementation:
+https://github.com/mactsouk/opensource.com/blob/master/concTCP.go

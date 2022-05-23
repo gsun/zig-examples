@@ -24,15 +24,14 @@ pub fn main() !void {
         const client = try allocator.create(Client);
         client.* = Client{
             .conn = try server.accept(),
-            .handle_frame = async client.handle(&room),
         };
+        _ = async client.handle(&room);
         try room.clients.putNoClobber(client, {});
     }
 }
 
 const Client = struct {
     conn: net.StreamServer.Connection,
-    handle_frame: @Frame(handle),
 
     fn handle(self: *Client, room: *Room) !void {
         _ = try self.conn.stream.write("server: welcome to the chat server\n");
